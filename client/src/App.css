@@ -1,8 +1,38 @@
+html, body, #root {
+  height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Elimina relleno */
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color-scheme: light dark;
+}
+/* body{
+  color: aliceblue;
+  background-color: #242424;
+} */
+
+.light-mode, .dark-mode {
+  min-height: 100%; /* Asegura que el contenedor principal ocupe toda la altura */
+  display: flex;
+  flex-direction: column; /* Alinea los elementos verticalmente */
+  justify-content: space-between; /* Espaciado entre los elementos */
+  align-items: center; /* Centra los elementos horizontalmente */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-mode {
+  background-color: #ffffff; /* Fondo claro */
+  color: #000000; /* Texto oscuro */
+}
+
+.dark-mode {
+  background-color: #242424; /* Fondo oscuro */
+  color: #ffffff; /* Texto claro */
 }
 
 .logo {
@@ -16,6 +46,77 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+.neon-frame {
+  position: relative;
+  display: inline-block;
+  padding: 10px; /* Espaciado entre el video y el marco */
+  border-radius: 20px; /* Bordes redondeados */
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ff0000, #00ff00);
+  background-size: 300% 300%; /* Tamaño del gradiente para animación */
+  animation: neon-border 3s linear infinite; /* Animación del borde */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Sombra de neón */
+}
+
+.neon-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 5px;
+  background: inherit; /* Heredar el gradiente */
+  filter: blur(10px); /* Efecto de desenfoque */
+  z-index: -1; /* Colocar detrás del video */
+}
+
+.neon-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neon-logo img {
+  margin-right: 10px;
+  display: block;
+  border-radius: 10%; /* Bordes redondeados para el logo */
+  filter: drop-shadow(0 0 10px #ff00ff); /* Sombra inicial */
+  animation: neon-border2 3s infinite alternate; /* Reutiliza la animación del borde */
+}
+
+
+
+
+@keyframes neon-border2 { 
+  0% {
+    filter: drop-shadow(0 0 2px #ff00ff); /* Rosa */
+  }
+  25% {
+    filter: drop-shadow(0 0 2px #00ffff); /* Cian */
+  }
+  50% {
+    filter: drop-shadow(0 0 2px #ff0000); /* Rojo */
+  }
+  75% {
+    filter: drop-shadow(0 0 2px #00ff00); /* Verde */
+  }
+  100% {
+    filter: drop-shadow(0 0 2px #ff00ff); /* Vuelve al rosa */
+  }
+}
+
+@keyframes neon-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes logo-spin {
