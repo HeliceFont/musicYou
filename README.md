@@ -4,11 +4,11 @@
 npx json-server --watch db.json --port 3001
 
 <p align="center">
-  <img src="/public/musicYou-logo-back-dark.svg" width="100" alt="musicYou Logo" />
+  <img src="/client/public/musicYou-logo-back-dark.svg" width="100" alt="musicYou Logo" />
 </p>
 <hr/>
 <p align="center">
-<img src="/src/assets/CapturaMusicYou.png" width="1000" alt="musicYou Web"/>
+<img src="/client/src/assets/CapturaMusicYou.png" width="1000" alt="musicYou Web"/>
 </p>
 
 <h1 align="center">🎧 musicYou</h1>
