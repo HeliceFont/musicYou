@@ -44,7 +44,7 @@ const clientBuildPath = path.join(__dirname, '../client/dist');
 app.use(express.static(clientBuildPath));
 
 // Todas las rutas no API van al index.html de React
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 

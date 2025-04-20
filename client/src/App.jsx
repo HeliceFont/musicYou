@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import ReactPlayer from "react-player/youtube";
 import Logo from './assets/vite.svg'; // Asegúrate de que la ruta sea correcta
 
+const isProd = import.meta.env.MODE === 'production';
+const API_URL = isProd
+  ? '/api'
+  : 'http://localhost:3000/api';
+
 function App() {
   const time = new Date();
   const day = time.toLocaleString("es-ES", { weekday: "long" });
@@ -34,7 +39,7 @@ function App() {
 
   // Cargar las URLs desde el archivo JSON al iniciar
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/videos`) // Usa la variable de entorno
+    fetch(`${API_URL}/videos`) // Usa la variable de entorno
       .then((response) => response.json())
       .then((data) => {
         const urls = data.map((video) => video.url);
@@ -52,7 +57,7 @@ function App() {
   // Función para añadir una nueva URL a la lista
   const addVideoUrl = () => {
     if (newUrl.trim() !== '' && ReactPlayer.canPlay(newUrl)) {
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/videos`, {
+      fetch(`${API_URL}/videos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
