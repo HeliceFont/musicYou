@@ -5,7 +5,7 @@ import Logo from './assets/vite.svg'; // Asegúrate de que la ruta sea correcta
 
 const isProd = import.meta.env.MODE === 'production';
 const API_URL = isProd
-  ? '/api'
+  ? 'https://musicyou-1.onrender.com/api'
   : 'http://localhost:3000/api';
 
 function App() {
@@ -84,6 +84,8 @@ function App() {
           playing={false} // No reproducir automáticamente
           controls={true} // Mostrar controles
           loop={true} // Repetir el video
+          width="100%" // Ajusta el ancho al contenedor
+          height="100%" // Ajusta la altura al contenedor
           config={{
             youtube: {
               playerVars: {
@@ -96,10 +98,6 @@ function App() {
           style={{
             borderRadius: '20px',
             overflow: 'hidden',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)',
           }}
         />
       </div>
@@ -136,7 +134,7 @@ function App() {
       </div>
       <hr />
       <br />
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+      <div className='my-video'>
         <MyVideo />
       </div>          
     </>

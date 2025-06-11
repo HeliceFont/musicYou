@@ -2,6 +2,7 @@ html, body, #root {
   height: 100%; /* Asegura que ocupen toda la altura de la ventana */
   margin: 0; /* Elimina márgenes */
   padding: 0; /* Elimina relleno */
+  overflow-y: hidden;/* Evita el desplazamiento vertical */
 }
 
 #root {
@@ -56,6 +57,10 @@ html, body, #root {
   background-size: 300% 300%; /* Tamaño del gradiente para animación */
   animation: neon-border 3s linear infinite; /* Animación del borde */
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Sombra de neón */
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  max-width: 720px; /* Limita el tamaño máximo del video */
+  aspect-ratio: 16 / 9; /* Mantiene la proporción del video */
+  overflow: hidden; /* Evita desbordamientos */
 }
 
 .neon-frame::before {
@@ -85,7 +90,16 @@ html, body, #root {
   filter: drop-shadow(0 0 10px #ff00ff); /* Sombra inicial */
   animation: neon-border2 3s infinite alternate; /* Reutiliza la animación del borde */
 }
-
+.my-video{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  max-width: 1280px; /* Tamaño máximo para pantallas grandes */
+  margin: 0 auto; /* Centra el video horizontalmente */
+  padding: 1rem;
+}
 
 
 
@@ -140,4 +154,53 @@ html, body, #root {
 
 .read-the-docs {
   color: #888;
+}
+@media (max-width: 768px) {
+  .neon-frame {
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+    max-width: 100%; /* Asegura que el video se ajuste al ancho de la pantalla */
+    aspect-ratio: 16 / 9; /* Mantiene la proporción en pantallas pequeñas */
+  }
+  .my-video{
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+    height: auto; /* Altura automática para mantener la proporción */
+    padding: 0.5rem; /* Reduce el padding en pantallas pequeñas */
+  }
+  h1 {
+    font-size: 1.5rem; /* Reduce el tamaño del encabezado principal */
+  }
+
+  h2 {
+    font-size: 1.2rem; /* Reduce el tamaño de los subtítulos */
+  }
+
+  .neon-logo img {
+    height: 15vh; /* Reduce el tamaño del logo */
+  }
+
+  .card {
+    font-size: 0.9rem; /* Reduce el tamaño del texto en las tarjetas */
+  }
+
+  input {
+    width: 90%; /* Ajusta el ancho del input */
+    font-size: 0.9rem; /* Reduce el tamaño del texto en el input */
+  }
+
+  button {
+    font-size: 0.9rem; /* Reduce el tamaño del texto en el botón */
+    padding: 0.4rem 0.8rem; /* Ajusta el padding del botón */
+  }
+}
+@media (min-width: 711px) {
+  .logo {
+    height: 4em; /* Ajusta el tamaño del logo en pantallas pequeñas */
+  }
+  .neon-logo img {
+    height: 3em; /* Ajusta el tamaño del logo en pantallas pequeñas */
+  }
+  .my-video{
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+    height: auto; /* Altura automática para mantener la proporción */
+  }
 }
